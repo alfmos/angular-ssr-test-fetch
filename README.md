@@ -1,27 +1,37 @@
-# TestAngular
+This is a simple project to reproduce Angular SSR not waiting for http calls
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
+the error received from the http.get call is:
 
-## Development server
+```
+Error:  _e {
+  headers: e {
+    normalizedNames: Map(0) {},
+    lazyUpdate: null,
+    headers: Map(0) {}
+  },
+  status: 0,
+  statusText: 'Unknown Error',
+  url: 'https://www.boredapi.com/api/activity',
+  ok: false,
+  name: 'HttpErrorResponse',
+  message: 'Http failure response for https://www.boredapi.com/api/activity: 0 undefined',
+  error: TypeError: fetch failed
+      at Object.fetch (node:internal/deps/undici/undici:14062:11)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+    cause: ConnectTimeoutError: Connect Timeout Error
+        at onConnectTimeout (C:\Users\Alfonso Moscato\Documents\progetti_sw\test-angular\test-angular\node_modules\undici\lib\core\connect.js:186:24)
+        at C:\Users\Alfonso Moscato\Documents\progetti_sw\test-angular\test-angular\node_modules\undici\lib\core\connect.js:133:46
+        at Immediate.<anonymous> (C:\Users\Alfonso Moscato\Documents\progetti_sw\test-angular\test-angular\node_modules\undici\lib\core\connect.js:172:33)
+        at b.<computed> (file:///C:/Users/Alfonso%20Moscato/Documents/progetti_sw/test-angular/test-angular/.angular/prerender-root/cb636af2-887c-4e33-aa91-bb5fa7ab2ea4/polyfills.server.mjs:4:11677)
+        at s.invokeTask (file:///C:/Users/Alfonso%20Moscato/Documents/progetti_sw/test-angular/test-angular/.angular/prerender-root/cb636af2-887c-4e33-aa91-bb5fa7ab2ea4/polyfills.server.mjs:3:7335)
+        at Object.onInvokeTask (file:///C:/Users/Alfonso%20Moscato/Documents/progetti_sw/test-angular/test-angular/.angular/prerender-root/cb636af2-887c-4e33-aa91-bb5fa7ab2ea4/chunk-W4NUC77D.mjs:8:49532)
+        at s.invokeTask (file:///C:/Users/Alfonso%20Moscato/Documents/progetti_sw/test-angular/test-angular/.angular/prerender-root/cb636af2-887c-4e33-aa91-bb5fa7ab2ea4/polyfills.server.mjs:3:7256)
+        at ne.runTask (file:///C:/Users/Alfonso%20Moscato/Documents/progetti_sw/test-angular/test-angular/.angular/prerender-root/cb636af2-887c-4e33-aa91-bb5fa7ab2ea4/polyfills.server.mjs:3:2678)
+        at invokeTask (file:///C:/Users/Alfonso%20Moscato/Documents/progetti_sw/test-angular/test-angular/.angular/prerender-root/cb636af2-887c-4e33-aa91-bb5fa7ab2ea4/polyfills.server.mjs:3:8410)
+        at E.z.useG.invoke (file:///C:/Users/Alfonso%20Moscato/Documents/progetti_sw/test-angular/test-angular/.angular/prerender-root/cb636af2-887c-4e33-aa91-bb5fa7ab2ea4/polyfills.server.mjs:3:8312) {
+      code: 'UND_ERR_CONNECT_TIMEOUT'
+    }
+  }
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To check the html page you can inspect its html printed on terminal. There is also error text inside the html, as otherwiese it wasn't visible
